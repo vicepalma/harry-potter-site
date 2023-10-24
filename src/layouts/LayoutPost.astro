@@ -1,0 +1,73 @@
+---
+import MenuBar from "../components/MenuBar.astro";
+import MenuItem from "../components/MenuItem.astro";
+import menuItems from "../data/menuBarData";
+
+---
+
+<html lang="en">
+  <body>
+    <MenuBar>
+      {
+        menuItems.map(({ icon, title, url }) => (
+          <MenuItem icon={icon} title={title} url={url} />
+        ))
+      }
+    </MenuBar>
+    <div class="container">
+      <div class="logo">
+        <img src="/assets/hero-logo.webp" width="400" alt="" />
+      </div>
+      <slot />
+    </div>
+  </body>
+</html>
+<style is:global>
+    :root {
+      --accent: 124, 58, 237;
+      --accent-gradient: linear-gradient(
+        45deg,
+        rgb(var(--accent)),
+        #da62c4 30%,
+        white 60%
+      );
+    }
+    html {
+      font-family: "Crimson Text", serif;
+      background-color: #000;
+    }
+    body {
+      font-family: "Crimson Text", serif;
+      background-image: url(../../assets/bg.webp);
+      margin: 0;
+      min-height: 100vh;
+      color: white;
+      font-size: 18px;
+    }
+    .container a {
+      color: rgb(255, 179, 0);
+    }
+    code {
+      font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+        DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    }
+  
+    .container {
+      margin-top: 120px;
+      width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+  
+    .logo {
+      text-align: center;
+      position: relative;
+      top: -100px;
+      margin-bottom: -50px;
+    }
+  
+    p img {
+      width: 100%;
+    }
+  </style>
